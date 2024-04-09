@@ -81,6 +81,10 @@ impl RunWrapper {
                             cgroup_permissions: Some(String::from("rwm")),
                         }]),
                         port_bindings: Some(port_bindings),
+                        // added because the recent Amazon Linux needs
+                        // privileged mode to allow containers to bind
+                        // VSOCK
+                        privileged: Some(true),
                         ..Default::default()
                     }),
                     exposed_ports: Some(exposed_ports),
